@@ -1,0 +1,48 @@
+<app-header select="AddCourse"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
+
+
+      <div class="col-md-8">
+        <h2>Add Course</h2><br>
+        <div class="form-group">
+          <label style="font-size: medium">Course Name:</label>
+          <div class="input-group">
+            <input type="text" class="form-control" [(ngModel)]="courseName" placeholder="Enter the Course Name" ><br>
+            <span class="input-group-btn">
+              <button type="button" [disabled]="!courseName" class="btn btn-success" (click)="submit()"><i
+                  class="fa fa-plus-square-o" style="font-size: large"></i></button>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-7">
+      <h2>Available Courses</h2><br>
+      <div style="overflow-y:auto; max-height: 350px">
+
+        <table class="table table-bordered tableFixHead">
+          <thead class="thead-dark">
+            <tr>
+              <th style="text-align: center">Course Name</th>
+              <th style="text-align: center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let course of courseList" style="text-transform: capitalize">
+              <td style="text-align: center">{{course.course_name|titlecase}}</td>
+              <td style="text-align: center"><button class="btn btn-outline-light"
+                  (click)="deleteCourse(course.course_id)">
+                  <i class="fa fa-trash-o" style="color:red;font-size:15px"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
